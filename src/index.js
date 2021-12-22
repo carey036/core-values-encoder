@@ -57,14 +57,14 @@ import "babel-polyfill";
 
         for(let c of hexs){
             const n = Number.parseInt(c, 16);
-            if(n < 10){
+            if(n < values.length/2){
                 duo.push(n);
             }else{
                 if(randBin()){
-                    duo.push(10);
-                    duo.push(n - 10);
+                    duo.push(values.length/2);
+                    duo.push(n - values.length/2);
                 }else{
-                    duo.push(11);
+                    duo.push(values.length/2 + 1);
                     duo.push(n - 6);
                 }
             }
@@ -82,12 +82,12 @@ import "babel-polyfill";
         let i = 0;
 
         while(i < l){
-            if(duo[i] < 10){
+            if(duo[i] < values.length/2){
                 hex.push(duo[i]);
             }else{
-                if(duo[i] === 10){
+                if(duo[i] === values.length/2){
                     i++;
-                    hex.push(duo[i] + 10);
+                    hex.push(duo[i] + values.length/2 + 1);
                 }else{
                     i++;
                     hex.push(duo[i] + 6);
